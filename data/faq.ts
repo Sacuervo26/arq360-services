@@ -1,7 +1,9 @@
 export const commonFaq = [
-  ["¿QUÉ TECNOLOGÍA UTILIZA ARQ360?", "ARQ360 utiliza sistemas profesionales de captura espacial, fotografía 360°, tecnología LiDAR y procesamiento digital para transformar espacios físicos en información visual, dimensional y técnica."],
-  ["¿QUÉ PUEDO RECIBIR DESPUÉS DE UN ESCANEO?", "Dependiendo del alcance, puedes recibir recorridos virtuales, planos, mediciones, archivos CAD, nube de puntos, documentación técnica y otros entregables."],
-  ["¿QUÉ PAQUETE NECESITO?", "Standard está pensado para visualización y documentación general, Premium incorpora mayor detalle y Advanced está orientado a arquitectura, diseño y construcción."],
-  ["¿CUÁNTO TARDA UN PROYECTO?", "Depende del área, la ubicación, la complejidad y los entregables seleccionados. La cotización confirma el alcance y el cronograma."],
-  ["¿ARQ360 TRABAJA EN TODA COLOMBIA?", "La cobertura se valida según ciudad, desplazamiento y características del proyecto."],
+  ["¿QUÉ PAQUETE NECESITO?", "Standard es ideal para visualizar, entender y compartir un espacio; Premium añade mayor detalle; Advanced está orientado a arquitectura, diseño y construcción. Si no estás seguro, ARQ360 te ayuda a definirlo."],
+  ["¿QUÉ RECIBO DESPUÉS DE LA CAPTURA?", "Recibes el paquete y los entregables acordados: pueden incluir recorrido virtual, planos, mediciones, archivos editables, datos LiDAR o documentación técnica."],
+  ["¿QUÉ DIFERENCIA HAY ENTRE STANDARD, PREMIUM Y ADVANCED?", "La diferencia está en el nivel de información. Standard cubre lo esencial, Premium amplía el detalle y Advanced incorpora documentación para flujos técnicos."],
+  ["¿QUÉ ES UNA NUBE DE PUNTOS?", "Es una representación espacial compuesta por datos LiDAR que sirve como referencia para levantamientos, análisis y flujos CAD o BIM."],
+  ["¿PUEDO SOLICITAR PLANOS EDITABLES CAD / DWG?", "Sí. Los planos editables se cotizan según el área, el nivel de detalle y el uso previsto del proyecto."],
+  ["¿ARQ360 TRABAJA CON INMOBILIARIAS?", "Sí. Creamos recorridos, planos y mediciones para mejorar la presentación de propiedades y facilitar decisiones antes de una visita."],
+  ["¿ARQ360 REALIZA LEVANTAMIENTOS PARA ARQUITECTURA?", "Sí. El alcance puede incluir captura espacial, planos, mediciones, CAD, datos LiDAR y otros entregables técnicos."],
 ] as const;

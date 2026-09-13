@@ -1,11 +1,11 @@
 export const deliverables = [
-  { title: "RECORRIDO 3D", note: "Exploración inmersiva", image: "/images/hero-architecture-v3.png", href: "/servicios/recorridos-3d" },
-  { title: "PLANOS 2D", note: "Distribución precisa", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios/planos" },
-  { title: "MEDICIONES", note: "Datos consultables", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios/mediciones" },
-  { title: "CAD / DWG", note: "Documentación editable", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios/cad-dwg" },
-  { title: "BIM / REVIT", note: "Ejemplo de entregable", image: "/images/iguide/3d-model-reference.png", href: "/servicios/bim-revit" },
-  { title: "NUBE DE PUNTOS", note: "Geometría espacial", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios/point-cloud" },
-  { title: "REPORTES", note: "Información consolidada", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios/reportes" },
+  { title: "RECORRIDO VIRTUAL 3D", note: "Explora y comparte el espacio", image: "/images/hero-architecture-v3.png", href: "/servicios#standard" },
+  { title: "PLANOS 2D", note: "Comprende la distribución", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios#standard" },
+  { title: "MEDICIONES DEL ESPACIO", note: "Consulta dimensiones y áreas", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios#comparador" },
+  { title: "PLANOS EDITABLES", note: "CAD / DWG", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios?detalle=cad#entregables" },
+  { title: "MODELO DIGITAL", note: "BIM / REVIT", image: "/images/iguide/3d-model-reference.png", href: "/servicios?detalle=bim#entregables" },
+  { title: "NUBE DE PUNTOS", note: "Datos LiDAR", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios?detalle=nube-puntos#entregables" },
+  { title: "REPORTES DEL ESPACIO", note: "Información organizada", image: "/images/iguide/iguide-analytics-reference.png", href: "/servicios?detalle=reportes#entregables" },
 ] as const;
 
 export const planixFeatures = [
@@ -18,27 +18,26 @@ export const planixFeatures = [
 ] as const;
 
 export const workflow = [
-  { title: "CUÉNTANOS TU PROYECTO", text: "Cuéntanos qué espacio necesitas digitalizar, dónde está y qué información necesitas.", microcopy: "Casa, apartamento, oficina, edificio, comercio o proyecto técnico.", href: "/contacto" },
-  { title: "VAMOS A TU ESPACIO", text: "Coordinamos la visita y capturamos el inmueble con tecnología PLANIX R1 y LiDAR.", microcopy: "Una captura puede convertirse en múltiples entregables." },
-  { title: "PROCESAMOS TU PROYECTO", text: "Transformamos la información capturada en los productos que seleccionaste.", microcopy: "Recorrido 3D · Planos · Mediciones · CAD · BIM / Revit · Nube de puntos" },
-  { title: "RECIBE TUS ENTREGABLES", text: "Información lista para vender, diseñar, documentar, construir o gestionar.", microcopy: "Acceso digital y archivos técnicos según alcance.", href: "/servicios" },
+  { title: "CUÉNTANOS QUÉ NECESITAS", text: "Cuéntanos qué espacio deseas digitalizar y qué información necesitas recibir.", microcopy: "Te ayudamos a definir el nivel y los entregables.", href: "/contacto" },
+  { title: "CAPTURAMOS TU ESPACIO", text: "Coordinamos la visita y realizamos la captura espacial profesional.", microcopy: "Una captura puede alimentar múltiples resultados." },
+  { title: "PROCESAMOS LA INFORMACIÓN", text: "Generamos los entregables seleccionados para tu proyecto.", microcopy: "Visualización · Planos · Mediciones · Información técnica" },
+  { title: "RECIBES TUS ENTREGABLES", text: "Obtén información lista para vender, diseñar, documentar, construir o gestionar.", microcopy: "Acceso digital y archivos según alcance.", href: "/servicios" },
 ] as const;
 
 export const industries = [
-  { title: "INMOBILIARIAS", text: "Vende más rápido", href: "/soluciones/inmobiliarias", position: "0%" },
-  { title: "ARQUITECTURA", text: "Diseña con datos reales", href: "/soluciones/arquitectura", position: "25%" },
-  { title: "CONSTRUCCIÓN", text: "Planifica y ejecuta mejor", href: "/soluciones/construccion", position: "50%" },
-  { title: "SEGUROS & RESTAURACIÓN", text: "Documenta con precisión", href: "/soluciones/seguros-restauracion", position: "75%" },
-  { title: "GESTIÓN DE INSTALACIONES", text: "Gestiona tus activos", href: "/soluciones/gestion-instalaciones", position: "100%" },
+  { title: "INMOBILIARIO", text: "Presenta mejor cada propiedad.", href: "/sectores/inmobiliario", position: "0%" },
+  { title: "ARQUITECTURA Y CONSTRUCCIÓN", text: "Levanta y documenta en tiempo récord.", href: "/sectores/arquitectura-construccion", position: "33%" },
+  { title: "SEGUROS Y RESTAURACIÓN", text: "Documenta con precisión.", href: "/sectores/seguros-restauracion", position: "66%" },
+  { title: "PLANOS DE EVACUACIÓN", text: "Información para espacios más seguros.", href: "/sectores/evacuacion-emergencias", position: "100%" },
 ] as const;
 
 export const technicalOutputs = [
-  { title: "PLANOS CAD", image: "/images/site/cad-dwg-hero-clean.png", text: "Planimetría editable para documentación y coordinación." },
-  { title: "PLANOS DE CUBIERTA", image: "/images/site/cad-dwg-hero-clean.png", text: "Lectura clara de cubiertas, pendientes y geometrías." },
+  { title: "PLANOS EDITABLES · CAD / DWG", image: "/images/site/cad-dwg-hero-clean.png", text: "Documentación editable para continuar trabajando en software de dibujo y diseño." },
+  { title: "PLANO DE CUBIERTA", image: "/images/iguide/roof-plan-reference.png", text: "Documentación gráfica de la geometría y configuración de la cubierta." },
   { title: "ELEVACIONES EXTERIORES", image: "/images/site/cad-dwg-hero-clean.png", text: "Elevaciones técnicas derivadas del levantamiento espacial." },
-  { title: "PLANOS DE CIELO REFLEJADO", image: "/images/site/cad-dwg-hero-clean.png", text: "Información superior organizada para coordinación técnica." },
-  { title: "BIM / REVIT", image: "/images/iguide/3d-model-reference.png", text: "Ejemplo visual de entregable BIM / Revit para documentación de condiciones existentes." },
-  { title: "NUBE DE PUNTOS", image: "/images/planix/planix-scanned-room-effect-reference.png", text: "Registro espacial denso para análisis y modelado." },
+  { title: "PLANO DE CIELO REFLEJADO · RCP", image: "/images/iguide/reflected-ceiling-reference.png", text: "Cielos, luminarias, alturas y elementos superiores organizados para coordinación." },
+  { title: "MODELO DIGITAL · BIM / REVIT", image: "/images/iguide/3d-model-reference.png", text: "Información digital del espacio para apoyar arquitectura, coordinación y diseño." },
+  { title: "NUBE DE PUNTOS · DATOS LiDAR", image: "/images/planix/planix-scanned-room-effect-reference.png", text: "Representación espacial del entorno para levantamientos y flujos técnicos." },
 ] as const;
 
-export const footerLinks = ["INICIO", "SERVICIOS", "SOLUCIONES", "PLANIX R1", "PROYECTOS", "NOSOTROS", "CONTACTO"] as const;
+export const footerLinks = ["INICIO", "SERVICIOS", "PLANIX R1", "PROYECTOS", "NOSOTROS", "CONTACTO"] as const;

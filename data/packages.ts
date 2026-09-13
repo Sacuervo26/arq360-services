@@ -1,5 +1,7 @@
+export type PackageSlug = "standard" | "premium" | "advanced";
+
 export type ServicePackage = {
-  slug: "standard" | "premium" | "advanced";
+  slug: PackageSlug;
   name: string;
   group: string;
   tagline: string;
@@ -12,9 +14,40 @@ export type ServicePackage = {
 };
 
 export const packages: ServicePackage[] = [
-  { slug: "standard", name: "STANDARD", group: "VISUALIZACIÓN Y DOCUMENTACIÓN", tagline: "LO ESENCIAL PARA VISUALIZAR, MEDIR Y DOCUMENTAR UN ESPACIO.", description: "Un nivel de servicio claro para recorrer, comprender y compartir las condiciones generales de un inmueble.", includes: ["Recorrido virtual 3D", "Plano 2D", "Mediciones", "Áreas", "Documentación básica del espacio", "Experiencia compartible"], idealFor: ["Inmobiliarias", "Propietarios", "Espacios comerciales", "Documentación general"], formats: ["Experiencia web", "Plano PDF", "Archivos incluidos según alcance"], addons: ["CAD / DWG", "Elevaciones", "Plano de cubierta"] },
-  { slug: "premium", name: "PREMIUM", group: "REPRESENTACIÓN AMPLIADA", tagline: "UNA REPRESENTACIÓN MÁS COMPLETA DEL ESPACIO.", description: "Incorpora todo lo esencial de Standard y amplía el nivel de detalle visual y planimétrico del inmueble.", includes: ["Todo lo incluido en Standard", "Planos con mayor nivel de detalle", "Elementos y objetos cuando corresponda", "Documentación visual ampliada", "Información adicional del inmueble"], idealFor: ["Propiedades de alto valor", "Arquitectura", "Remodelación", "Documentación avanzada"], formats: ["Experiencia web", "Planos PDF", "Archivos incluidos según alcance"], addons: ["CAD / DWG", "BIM / Revit", "Plano de cielo reflejado"], badge: "MÁS DETALLE" },
-  { slug: "advanced", name: "ADVANCED", group: "ARQUITECTURA Y CONSTRUCCIÓN", tagline: "DEL ESPACIO REAL A INFORMACIÓN TÉCNICA.", description: "El nivel orientado a convertir la captura en documentación utilizable para diseñar, remodelar, coordinar y construir.", includes: ["Recorrido virtual", "Planos y mediciones", "CAD / DWG", "Información LiDAR", "DXF cuando corresponda", "Elevaciones", "Plano de cubierta", "Plano de cielo reflejado", "BIM / Revit cuando corresponda"], idealFor: ["Arquitectura", "Diseño", "Remodelación", "Construcción", "Documentación de existentes"], formats: ["DWG", "DXF cuando aplique", "PDF", "RVT cuando corresponda"], addons: ["Plano de sitio", "Documentación especializada"] },
+  {
+    slug: "standard",
+    name: "STANDARD",
+    group: "VISUALIZACIÓN Y DOCUMENTACIÓN",
+    tagline: "PARA VER, ENTENDER Y COMPARTIR EL ESPACIO.",
+    description: "Todo lo esencial para presentar, recorrer y comprender un inmueble.",
+    includes: ["Recorrido virtual 3D", "Planos 2D", "Mediciones del espacio", "Áreas", "Enlace compartible", "Documentación del espacio"],
+    idealFor: ["Inmobiliarias", "Propietarios", "Venta y arriendo", "Espacios comerciales", "Documentación general"],
+    formats: ["Experiencia web compartible", "Planos y documentación según alcance"],
+    addons: ["Planos editables CAD / DWG", "Elevaciones exteriores", "Plano de cubierta"],
+  },
+  {
+    slug: "premium",
+    name: "PREMIUM",
+    group: "REPRESENTACIÓN AMPLIADA",
+    badge: "MÁS DETALLE",
+    tagline: "PARA QUIEN NECESITA VER MÁS DEL ESPACIO.",
+    description: "Un nivel superior de documentación para proyectos donde cada detalle importa.",
+    includes: ["Todo lo incluido en Standard", "Recorrido virtual 3D", "Planos detallados", "Mediciones y áreas", "Elementos del espacio cuando aplique", "Documentación visual ampliada"],
+    idealFor: ["Propiedades de alto valor", "Arquitectos", "Remodelaciones", "Diseño", "Documentación detallada"],
+    formats: ["Experiencia web compartible", "Planos detallados", "Documentación según alcance"],
+    addons: ["Planos editables CAD / DWG", "Modelo digital BIM / Revit", "Plano de cielo reflejado"],
+  },
+  {
+    slug: "advanced",
+    name: "ADVANCED",
+    group: "ARQUITECTURA Y CONSTRUCCIÓN",
+    tagline: "PARA DISEÑAR, DOCUMENTAR Y CONSTRUIR.",
+    description: "Convierte la captura espacial en información técnica para arquitectura, remodelación y construcción.",
+    includes: ["Recorrido virtual", "Planos y mediciones", "Planos editables CAD / DWG", "Nube de puntos y datos LiDAR", "Documentación de condiciones existentes", "PDF técnico"],
+    idealFor: ["Arquitectura", "Construcción", "Remodelación", "Diseño interior", "Levantamientos arquitectónicos", "Documentación as-built"],
+    formats: ["DWG y PDF según alcance", "Datos LiDAR", "RVT cuando forme parte del proyecto"],
+    addons: ["Modelo digital BIM / Revit", "Elevaciones", "Cubierta", "Cielo reflejado", "Plano de implantación"],
+  },
 ];
 
 export const packageBySlug = Object.fromEntries(packages.map((item) => [item.slug, item])) as Record<string, ServicePackage>;

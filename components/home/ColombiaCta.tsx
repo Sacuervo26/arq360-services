@@ -11,8 +11,9 @@ export function ColombiaCta() {
       <div className="earth-grid" aria-hidden="true" />
       <Reveal className="colombia-cta__content">
         <div className="system-heading__index"><span>10</span><i />COLOMBIA</div>
-        <h2>DE LO REAL<br /><span>AL MUNDO DIGITAL.</span></h2>
-        <p>En ARQ360 transformamos espacios físicos en información precisa, visual y útil para diseñar, documentar, vender, gestionar y tomar mejores decisiones.</p>
+        <h2>DE LO REAL<br /><span>AL MUNDO DIGITAL.</span><br />EN TIEMPO RÉCORD.</h2>
+        <p>Transformamos espacios físicos en información precisa, visual y técnica lista para vender, diseñar, documentar y tomar mejores decisiones.</p>
+        <small>CAPTURA ESPACIAL · PROCESAMIENTO DIGITAL · ENTREGA ÁGIL</small>
         <div className="hero__actions"><TechButton href="/contacto" variant="primary">SOLICITAR COTIZACIÓN</TechButton>{whatsapp && <TechButton href={`https://wa.me/${whatsapp}`}>HABLAR POR WHATSAPP</TechButton>}</div>
       </Reveal>
       <div className="colombia-cta__label"><i />COLOMBIA<span>TECNOLOGÍA ESPACIAL</span></div>

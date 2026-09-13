@@ -39,7 +39,7 @@ export function ExperienceSection() {
           {near ? <iframe key={experienceTabs[active].id} className="viewer-frame__demo" src={getIguideEmbedUrl(experienceTabs[active].url)} title={`Tour iGUIDE — ${experienceTabs[active].label}`} loading="lazy" allow="fullscreen; accelerometer; gyroscope" allowFullScreen /> : <div className="viewer-placeholder"><span>INICIANDO GEMELO DIGITAL</span></div>}
           <i className="hud-corner hud-corner--tl" /><i className="hud-corner hud-corner--br" />
         </div>
-        <Link className="viewer-solution-link" href={experienceTabs[active].solutionHref}>VER SOLUCIÓN COMPLETA <span>↗</span></Link>
+        <Link className="viewer-solution-link" href={experienceTabs[active].solutionHref}>VER SECTOR COMPLETO <span>↗</span></Link>
       </Reveal>
     </section>
   );

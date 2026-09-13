@@ -16,7 +16,7 @@ export function DeliverablesSection() {
           <Reveal className={index === 0 ? "deliverable--wide" : ""} delay={(index % 4) * .04} key={item.title}>
             <Link className="deliverable" href={item.href}>
               <div className="deliverable__media"><Image src={item.image} alt={item.title} fill sizes={index === 0 ? "(max-width: 700px) 84vw, 30vw" : "(max-width: 700px) 62vw, 16vw"} /></div>
-              <span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.note}</p><i>VER SERVICIO ↗</i>
+              <span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.note}</p><i>VER DETALLE ↗</i>
             </Link>
           </Reveal>
         ))}
