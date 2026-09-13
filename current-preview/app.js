@@ -1,0 +1,7 @@
+const c=document.querySelector('#stars'),x=c.getContext('2d');let pts=[];function resize(){c.width=innerWidth;c.height=innerHeight;pts=Array.from({length:Math.floor(innerWidth/9)},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2+.2,s:Math.random()*.15+.03}))}function draw(){x.clearRect(0,0,c.width,c.height);for(const p of pts){p.y+=p.s;if(p.y>c.height)p.y=0;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle=`rgba(80,190,255,${.25+p.r/2})`;x.fill()}requestAnimationFrame(draw)}resize();draw();addEventListener('resize',resize);
+const holo=document.querySelector('#holo');document.querySelector('.hero').addEventListener('mousemove',e=>{const r=e.currentTarget.getBoundingClientRect(),rx=(e.clientY-r.top-r.height/2)/r.height*5,ry=(e.clientX-r.left-r.width/2)/r.width*-7;holo.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`});document.querySelector('.hero').addEventListener('mouseleave',()=>holo.style.transform='rotateX(0) rotateY(0)');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.animate([{opacity:0,transform:'translateY(28px)'},{opacity:1,transform:'translateY(0)'}],{duration:700,fill:'both',easing:'cubic-bezier(.2,.8,.2,1)'})}),{threshold:.08});document.querySelectorAll('.panel,.section,.earth').forEach(el=>io.observe(el));
+
+// Animated capture telemetry
+const pct=document.getElementById('capturePct');
+if(pct){let v=0,dir=1;setInterval(()=>{v+=dir*(Math.random()*5+1);if(v>=100){v=100;dir=-1;setTimeout(()=>dir=-1,500)}if(v<=72){v=72;dir=1}pct.textContent=Math.round(v)},120)}
