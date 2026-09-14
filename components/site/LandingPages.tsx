@@ -10,6 +10,8 @@ import { Breadcrumbs } from "./ServiceNavigation";
 import { DeliverablesExplorer } from "./DeliverablesExplorer";
 import { ProjectsExplorer } from "./ProjectsExplorer";
 import { DemoViewer } from "./DemoViewer";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
+import { getSectorWhatsAppMessage, WHATSAPP_MESSAGES } from "@/config/contact";
 
 const comparisonRows = [
   ["Recorrido virtual 3D", "included", "included", "included"],
@@ -17,17 +19,22 @@ const comparisonRows = [
   ["Mediciones del espacio", "included", "included", "included"],
   ["Áreas", "included", "included", "included"],
   ["Mayor nivel de detalle", "none", "included", "included"],
-  ["Planos editables CAD / DWG", "none", "available", "included"],
-  ["Datos LiDAR / nube de puntos", "none", "available", "included"],
-  ["Elevaciones exteriores", "none", "available", "available"],
-  ["Plano de cubierta", "none", "available", "available"],
-  ["Plano de cielo reflejado", "none", "available", "available"],
-  ["Modelo digital BIM / Revit", "none", "available", "available"],
+  ["Documentación técnica", "none", "none", "included"],
+  ["Personalizable", "none", "none", "included"],
+  ["Entregables técnicos", "none", "none", "available"],
+  ["Planos editables CAD / DWG", "none", "none", "optional"],
+  ["Modelo digital BIM / Revit", "none", "none", "optional"],
+  ["Nube de puntos y datos LiDAR", "none", "none", "optional"],
+  ["Elevaciones exteriores", "none", "none", "optional"],
+  ["Plano de cubierta", "none", "none", "optional"],
+  ["Plano de cielo reflejado", "none", "none", "optional"],
+  ["Plano de implantación", "none", "none", "optional"],
 ] as const;
 
 const statusLabel = {
   included: "✓ INCLUIDO",
   available: "○ SEGÚN ALCANCE",
+  optional: "○ OPCIONAL",
   none: "—",
 } as const;
 
@@ -36,16 +43,19 @@ function PackageCards({ detailed = false }: { detailed?: boolean }) {
     <div className={`package-cards ${detailed ? "package-cards--detailed" : ""}`}>
       {packages.map((item) => (
         <article className="package-card" id={item.slug} key={item.slug}>
-          {item.badge && <span>{item.badge}</span>}
+          {item.badge && <span className={item.customizable ? "package-card__badge-personalizable" : ""}>{item.badge}</span>}
           <small>{item.group}</small>
           <h3>{item.name}</h3>
           <p>{item.tagline}</p>
           {detailed && <p className="package-card__description">{item.description}</p>}
           <ul>{item.includes.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+          {item.customizable && <div className="package-card__addons"><b>PUEDES AÑADIR</b><ul>{item.addons.map((addon) => <li key={addon}>{addon}</li>)}</ul><small>Solo con Advanced. Costo adicional según m² y alcance.</small></div>}
           {detailed && <div className="package-card__ideal"><b>IDEAL PARA</b><p>{item.idealFor.join(" · ")}</p></div>}
           <div className="package-card__actions">
-            <Link href={`/contacto?paquete=${item.slug}`}>ELEGIR {item.name} ↗</Link>
+            <WhatsAppLink message={WHATSAPP_MESSAGES[item.slug]} eventId={`whatsapp_${item.slug}`} appearance="text">{item.slug === "advanced" ? "COTIZAR ADVANCED" : `COTIZAR ${item.name}`}</WhatsAppLink>
+            {item.slug === "advanced" && <Link href="/servicios#entregables">VER ENTREGABLES ↗</Link>}
           </div>
+          {!item.customizable && <p className="package-card__advanced-note">Paquete definido. ¿Necesitas documentación técnica especializada? <Link href="/servicios#advanced">CONOCE ADVANCED →</Link></p>}
         </article>
       ))}
     </div>
@@ -70,12 +80,12 @@ export function ServicesLanding() {
         summary="Desde recorridos virtuales y planos hasta documentación técnica para arquitectura, construcción y gestión de espacios."
         primary="/servicios#comparador"
         primaryLabel="COMPARAR SERVICIOS"
-        secondary={{ href: "/contacto", label: "SOLICITAR COTIZACIÓN" }}
+        secondary={{ label: "HABLAR POR WHATSAPP", message: WHATSAPP_MESSAGES.general, eventId: "whatsapp_services" }}
       />
       <Breadcrumbs items={[{ label: "SERVICIOS" }]} />
 
       <section className="system-section service-levels" id="niveles">
-        <div className="section-head-row"><div><span className="section-kicker">02 — TRES NIVELES</span><h2>¿QUÉ NIVEL<br /><b>NECESITAS?</b></h2></div><p>Empieza por el resultado que buscas. Después añade únicamente los entregables que tu proyecto requiera.</p></div>
+        <div className="section-head-row"><div><span className="section-kicker">02 — TRES NIVELES</span><h2>¿QUÉ NIVEL<br /><b>NECESITAS?</b></h2></div><p>Standard y Premium son paquetes definidos. Advanced es el único nivel personalizable y permite añadir entregables técnicos.</p></div>
         <PackageCards detailed />
       </section>
 
@@ -84,10 +94,11 @@ export function ServicesLanding() {
         <div className="comparison__scroll"><table><thead><tr><th>QUÉ PUEDES RECIBIR</th>{packages.map((item) => <th key={item.slug}>{item.name}</th>)}</tr></thead><tbody>
           {comparisonRows.map(([feature, ...values]) => <tr key={feature}><th>{feature}</th>{values.map((value, index) => <td className={`status-${value}`} key={packages[index].slug}>{statusLabel[value]}</td>)}</tr>)}
         </tbody></table></div>
+        <p className="comparison__note">Los entregables técnicos adicionales están disponibles únicamente con Advanced y se cotizan por separado según el área en m², el nivel de detalle y el alcance del proyecto.</p>
       </section>
 
       <section className="system-section service-addons" id="entregables">
-        <div className="section-head-row"><div><span className="section-kicker">04 — ENTREGABLES ADICIONALES</span><h2>PERSONALIZA<br /><b>TU PROYECTO.</b></h2></div><p>Añade únicamente la información que tu proyecto realmente necesita. Abre cada opción para entender qué recibes.</p></div>
+        <div className="section-head-row service-addons__heading"><div><span className="section-kicker">04 — ADVANCED</span><h2>PERSONALIZA<br /><b>TU PROYECTO.</b></h2></div><div className="service-addons__intro"><b>ENTREGABLES TÉCNICOS EXCLUSIVOS DE ADVANCED</b><p>El paquete Advanced te permite añadir únicamente la información que tu proyecto necesita para arquitectura, diseño, remodelación o construcción.</p><small>Disponibles solo con Advanced. Se cotizan por separado según el área en m², el nivel de detalle y el alcance específico del proyecto.</small></div></div>
         <DeliverablesExplorer />
       </section>
 
@@ -99,11 +110,11 @@ export function ServicesLanding() {
       <section className="service-process page-container">
         <header><span>06 — CÓMO FUNCIONA</span><h2>DE TU ESPACIO<br /><b>A INFORMACIÓN ÚTIL.</b></h2></header>
         <ol>{[
-          ["DEFINE", "Cuéntanos qué espacio deseas digitalizar y para qué necesitas la información."],
-          ["CAPTURA", "Coordinamos la visita y registramos el inmueble con captura espacial profesional."],
-          ["PROCESA", "Transformamos la captura en el paquete y los entregables acordados."],
-          ["RECIBE", "Obtén información lista para presentar, diseñar, documentar o construir."],
-        ].map(([title, text], index) => <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p></li>)}</ol>
+          ["CUÉNTANOS QUÉ NECESITAS", "Cuéntanos qué inmueble o espacio deseas digitalizar y qué tipo de información necesitas recibir.", "Te ayudamos a definir el nivel de servicio y los entregables ideales para tu proyecto."],
+          ["CAPTURAMOS TU ESPACIO", "Coordinamos la visita y realizamos la captura espacial profesional en sitio.", "Una sola captura puede alimentar múltiples entregables según el alcance del proyecto."],
+          ["PROCESAMOS LA INFORMACIÓN", "Organizamos y producimos los entregables seleccionados para tu proyecto.", "Visualización, planos, mediciones, documentación técnica y archivos digitales según el servicio contratado."],
+          ["RECIBES TUS ENTREGABLES", "Obtén información lista para vender, diseñar, documentar, construir o gestionar.", "Recibes acceso digital y archivos según el alcance definido."],
+        ].map(([title, text, note], index) => <li key={title}><span>PASO {String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p><small>{note}</small>{index === 0 && <WhatsAppLink message={WHATSAPP_MESSAGES.general} eventId="whatsapp_services_process" appearance="text">SOLICITAR COTIZACIÓN</WhatsAppLink>}{index === 3 && <Link href="/servicios">VER SERVICIOS ↗</Link>}</li>)}</ol>
       </section>
       <ServicesFaq />
     </>
@@ -128,8 +139,9 @@ export function SectorPage({ sector }: { sector: Sector }) {
         title={sector.title}
         summary={sector.summary}
         image={sector.image}
-        primary={`/contacto?sector=${sector.slug}`}
         primaryLabel={sector.cta}
+        primaryMessage={getSectorWhatsAppMessage(sector.eyebrow)}
+        primaryEventId={`whatsapp_${sector.slug}`}
         secondary={{ href: `/servicios#${sector.package}`, label: `VER ${sector.package.toUpperCase()}` }}
       />
       <Breadcrumbs items={[{ label: "SECTORES" }, { label: sector.eyebrow }]} />
@@ -164,7 +176,7 @@ export function AboutPage() {
     ["CAPTURA ESPACIAL", "Registramos visual y dimensionalmente las condiciones del espacio con una metodología profesional."],
     ["PLANIX R1", "Utilizamos tecnología de captura 360° y LiDAR como base del levantamiento."],
     ["PROCESO", "Definimos el alcance, capturamos, procesamos y entregamos información organizada para cada objetivo."],
-    ["COBERTURA", "Evaluamos cada proyecto en Colombia según ubicación, área, alcance y desplazamiento."],
+    ["COBERTURA", "Actualmente prestamos servicios de captura en Bogotá D.C. Próximamente en más ciudades de Colombia."],
     ["POR QUÉ ARQ360", "Un solo levantamiento puede alimentar múltiples usos y reducir la fragmentación de información."],
   ];
   return (

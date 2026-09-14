@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { HeroHud } from "@/components/hud/HeroHud";
 import { TechButton } from "@/components/ui/TechButton";
 import type { SpatialQuality } from "@/components/three/spatialTypes";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
+import { WHATSAPP_MESSAGES } from "@/config/contact";
 
 const SpatialHeroCanvas = dynamic(() => import("@/components/three/SpatialHeroCanvas").then((mod) => mod.SpatialHeroCanvas), {
   ssr: false,
@@ -140,7 +142,7 @@ export function Hero() {
           <h1>TRANSFORMADOS<br />EN <span>INTELIGENCIA</span><br /><span>DIGITAL</span></h1>
           <p>Escaneo 3D, recorridos virtuales, planos, mediciones y documentación técnica con captura espacial profesional.</p>
           <div className="hero__actions">
-            <TechButton href="/contacto" variant="primary">SOLICITAR COTIZACIÓN</TechButton>
+            <WhatsAppLink message={WHATSAPP_MESSAGES.general} eventId="whatsapp_home">SOLICITAR COTIZACIÓN</WhatsAppLink>
             <TechButton href="/planix-r1">CONOCER PLANIX R1</TechButton>
           </div>
           <a className="scroll-cue" href="#metricas">

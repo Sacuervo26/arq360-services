@@ -2,10 +2,10 @@ export const deliverables = [
   { title: "RECORRIDO VIRTUAL 3D", note: "Explora y comparte el espacio", image: "/images/hero-architecture-v3.png", href: "/servicios#standard" },
   { title: "PLANOS 2D", note: "Comprende la distribución", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios#standard" },
   { title: "MEDICIONES DEL ESPACIO", note: "Consulta dimensiones y áreas", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios#comparador" },
-  { title: "PLANOS EDITABLES", note: "CAD / DWG", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios?detalle=cad#entregables" },
-  { title: "MODELO DIGITAL", note: "BIM / REVIT", image: "/images/iguide/3d-model-reference.png", href: "/servicios?detalle=bim#entregables" },
-  { title: "NUBE DE PUNTOS", note: "Datos LiDAR", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios?detalle=nube-puntos#entregables" },
-  { title: "REPORTES DEL ESPACIO", note: "Información organizada", image: "/images/iguide/iguide-analytics-reference.png", href: "/servicios?detalle=reportes#entregables" },
+  { title: "PLANOS EDITABLES", note: "CAD / DWG", image: "/images/site/cad-dwg-hero-clean.png", href: "/servicios?detalle=cad#entregables", advanced: true },
+  { title: "MODELO DIGITAL", note: "BIM / REVIT", image: "/images/iguide/3d-model-reference.png", href: "/servicios?detalle=bim#entregables", advanced: true },
+  { title: "NUBE DE PUNTOS", note: "Datos LiDAR", image: "/images/planix/planix-scanned-room-effect-reference.png", href: "/servicios?detalle=nube-puntos#entregables", advanced: true },
+  { title: "REPORTES DEL ESPACIO", note: "Información organizada", image: "/images/iguide/iguide-analytics-reference.png", href: "/servicios?detalle=reportes#entregables", advanced: true },
 ] as const;
 
 export const planixFeatures = [
@@ -18,10 +18,10 @@ export const planixFeatures = [
 ] as const;
 
 export const workflow = [
-  { title: "CUÉNTANOS QUÉ NECESITAS", text: "Cuéntanos qué espacio deseas digitalizar y qué información necesitas recibir.", microcopy: "Te ayudamos a definir el nivel y los entregables.", href: "/contacto" },
-  { title: "CAPTURAMOS TU ESPACIO", text: "Coordinamos la visita y realizamos la captura espacial profesional.", microcopy: "Una captura puede alimentar múltiples resultados." },
-  { title: "PROCESAMOS LA INFORMACIÓN", text: "Generamos los entregables seleccionados para tu proyecto.", microcopy: "Visualización · Planos · Mediciones · Información técnica" },
-  { title: "RECIBES TUS ENTREGABLES", text: "Obtén información lista para vender, diseñar, documentar, construir o gestionar.", microcopy: "Acceso digital y archivos según alcance.", href: "/servicios" },
+  { title: "CUÉNTANOS QUÉ NECESITAS", text: "Cuéntanos qué inmueble o espacio deseas digitalizar y qué tipo de información necesitas recibir.", microcopy: "Te ayudamos a definir el nivel de servicio y los entregables ideales para tu proyecto.", action: "quote" },
+  { title: "CAPTURAMOS TU ESPACIO", text: "Coordinamos la visita y realizamos la captura espacial profesional en sitio.", microcopy: "Una sola captura puede alimentar múltiples entregables según el alcance del proyecto." },
+  { title: "PROCESAMOS LA INFORMACIÓN", text: "Organizamos y producimos los entregables seleccionados para tu proyecto.", microcopy: "Visualización, planos, mediciones, documentación técnica y archivos digitales según el servicio contratado." },
+  { title: "RECIBES TUS ENTREGABLES", text: "Obtén información lista para vender, diseñar, documentar, construir o gestionar.", microcopy: "Recibes acceso digital y archivos según el alcance definido.", action: "services" },
 ] as const;
 
 export const industries = [

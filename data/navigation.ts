@@ -6,7 +6,7 @@ export const navigation = [
   { label: "NOSOTROS", href: "/nosotros" },
 ] as const;
 
-export const contactLink = { label: "CONTÁCTANOS", href: "/contacto" } as const;
+export const contactLabel = "CONTÁCTANOS";
 
 export const serviceMenu = [
   { index: "01", label: "STANDARD", text: "Para visualizar, entender y compartir un espacio.", href: "/servicios#standard" },
@@ -16,12 +16,11 @@ export const serviceMenu = [
 
 export const serviceMenuActions = [
   ["VER TODOS LOS SERVICIOS", "/servicios"],
-  ["ENTREGABLES ADICIONALES", "/servicios#entregables"],
-  ["SOLICITAR COTIZACIÓN", "/contacto"],
+  ["ENTREGABLES ADVANCED", "/servicios#entregables"],
 ] as const;
 
 export const footerGroups = [
-  { title: "SERVICIOS", links: [["Standard", "/servicios#standard"], ["Premium", "/servicios#premium"], ["Advanced", "/servicios#advanced"], ["Entregables adicionales", "/servicios#entregables"]] },
+  { title: "SERVICIOS", links: [["Standard", "/servicios#standard"], ["Premium", "/servicios#premium"], ["Advanced", "/servicios#advanced"], ["Entregables Advanced", "/servicios#entregables"]] },
   { title: "SECTORES", links: [["Inmobiliario", "/sectores/inmobiliario"], ["Arquitectura y Construcción", "/sectores/arquitectura-construccion"], ["Seguros y Restauración", "/sectores/seguros-restauracion"], ["Planos de Evacuación", "/sectores/evacuacion-emergencias"]] },
   { title: "TECNOLOGÍA", links: [["PLANIX R1", "/planix-r1"]] },
   { title: "EMPRESA", links: [["Nosotros", "/nosotros"], ["Proyectos", "/proyectos"], ["Contacto", "/contacto"]] },

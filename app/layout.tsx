@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { GeistMono, GeistSans } from "geist/font";
+import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preconnect" href="https://youriguide.com" />
       </head>
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>{children}</body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>{children}<WhatsAppFloatingButton /></body>
     </html>
   );
 }

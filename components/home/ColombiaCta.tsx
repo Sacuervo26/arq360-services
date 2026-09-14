@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { TechButton } from "@/components/ui/TechButton";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
+import { COVERAGE_CITY, WHATSAPP_MESSAGES } from "@/config/contact";
 
 export function ColombiaCta() {
-  const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
   return (
     <section className="colombia-cta" id="contacto">
       <Image src="/images/site/colombia-location-hero.png" alt="Colombia iluminada sobre la Tierra vista desde el espacio" fill sizes="100vw" unoptimized />
@@ -14,10 +15,10 @@ export function ColombiaCta() {
         <h2>DE LO REAL<br /><span>AL MUNDO DIGITAL.</span><br />EN TIEMPO RÉCORD.</h2>
         <p>Transformamos espacios físicos en información precisa, visual y técnica lista para vender, diseñar, documentar y tomar mejores decisiones.</p>
         <small>CAPTURA ESPACIAL · PROCESAMIENTO DIGITAL · ENTREGA ÁGIL</small>
-        <div className="hero__actions"><TechButton href="/contacto" variant="primary">SOLICITAR COTIZACIÓN</TechButton>{whatsapp && <TechButton href={`https://wa.me/${whatsapp}`}>HABLAR POR WHATSAPP</TechButton>}</div>
+        <div className="hero__actions"><WhatsAppLink message={WHATSAPP_MESSAGES.general} eventId="whatsapp_colombia">SOLICITAR COTIZACIÓN</WhatsAppLink><TechButton href="/contacto">VER CONTACTO</TechButton></div>
       </Reveal>
       <div className="colombia-cta__label"><i />COLOMBIA<span>TECNOLOGÍA ESPACIAL</span></div>
-      <div className="colombia-cta__coordinates" aria-hidden="true"><span>04° 34′ N</span><span>74° 18′ O</span><b>COBERTURA NACIONAL</b></div>
+      <div className="colombia-cta__coordinates" aria-hidden="true"><span>04° 34′ N</span><span>74° 18′ O</span><b>{COVERAGE_CITY}</b></div>
     </section>
   );
 }

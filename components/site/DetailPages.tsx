@@ -3,9 +3,12 @@ import type { Project } from "@/data/projects";
 import { SiteHero } from "./SiteHero";
 import { DemoViewer } from "./DemoViewer";
 import { Breadcrumbs } from "./ServiceNavigation";
+import { getProjectWhatsAppMessage, getWhatsAppUrl } from "@/config/contact";
 
 export function ProjectPage({ project }: { project: Project }) {
   const image = project.image === "/images/iguide/cad-floor-plan-reference.png" ? "/images/site/cad-dwg-hero-clean.png" : project.image;
+  const quoteMessage = getProjectWhatsAppMessage(project.title);
+  const quoteUrl = getWhatsAppUrl(quoteMessage);
   return (
     <>
       <SiteHero
@@ -13,8 +16,9 @@ export function ProjectPage({ project }: { project: Project }) {
         title={project.title}
         summary={project.description}
         image={image}
-        primary="/contacto"
         primaryLabel="COTIZAR UN PROYECTO"
+        primaryMessage={quoteMessage}
+        primaryEventId="whatsapp_project"
         secondary={{ href: "/proyectos", label: "VER PROYECTOS" }}
       />
       <Breadcrumbs items={[{ label: "PROYECTOS", href: "/proyectos" }, { label: project.title }]} />
@@ -25,8 +29,8 @@ export function ProjectPage({ project }: { project: Project }) {
       {project.demoId && <section className="embedded-section page-container"><div><span>02 — EXPERIENCIA</span><h2>NAVEGA EL PROYECTO</h2></div><DemoViewer demoId={project.demoId} /></section>}
       <section className="related page-container"><span>CONTINÚA EXPLORANDO</span><h2>DEFINE TU PROYECTO</h2><div>
         <Link href="/servicios"><b>COMPARAR SERVICIOS</b><p>Conoce Standard, Premium y Advanced.</p><i>↗</i></Link>
-        <Link href="/servicios#entregables"><b>VER ENTREGABLES</b><p>Explora la información adicional disponible.</p><i>↗</i></Link>
-        <Link href="/contacto"><b>SOLICITAR COTIZACIÓN</b><p>Cuéntanos qué espacio necesitas digitalizar.</p><i>↗</i></Link>
+        <Link href="/servicios#entregables"><b>VER ENTREGABLES ADVANCED</b><p>Explora la información técnica adicional disponible.</p><i>↗</i></Link>
+        {quoteUrl && <a href={quoteUrl} target="_blank" rel="noopener noreferrer" data-analytics-event="whatsapp_project"><b>SOLICITAR COTIZACIÓN</b><p>Cuéntanos qué espacio necesitas digitalizar.</p><i>↗</i></a>}
       </div></section>
     </>
   );

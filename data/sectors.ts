@@ -50,7 +50,7 @@ export const sectors: Sector[] = [
       { title: "FOTOS Y ETIQUETAS", text: "Vincula observaciones y referencias con puntos del espacio." },
       { title: "ANTES Y DESPUÉS", text: "Compara condiciones en diferentes momentos del proceso." },
     ],
-    includes: ["Recorrido virtual", "Mediciones", "Planos", "Fotografías", "Etiquetas espaciales", "Comparación antes y después"],
+    includes: ["Recorrido virtual", "Mediciones", "Planos", "Fotografías y documentación visual", "Comparación antes y después"],
   },
   {
     slug: "evacuacion-emergencias", eyebrow: "PLANOS DE EVACUACIÓN Y EMERGENCIA", title: "CONVIERTE TU PLANO EN INFORMACIÓN PARA LA SEGURIDAD.",

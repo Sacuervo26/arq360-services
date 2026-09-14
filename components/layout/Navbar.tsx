@@ -4,7 +4,8 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { contactLink, navigation, serviceMenu, serviceMenuActions } from "@/data/navigation";
+import { contactLabel, navigation, serviceMenu, serviceMenuActions } from "@/data/navigation";
+import { getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contact";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -13,6 +14,7 @@ export function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+  const whatsappHref = getWhatsAppUrl(WHATSAPP_MESSAGES.general);
 
   const closeMenus = () => {
     setMobileOpen(false);
@@ -77,9 +79,9 @@ export function Navbar() {
         ))}
       </nav>
 
-      <Link href={contactLink.href} className="nav-cta" onClick={closeMenus}>
-        {contactLink.label} <span>→</span>
-      </Link>
+      {whatsappHref && <a href={whatsappHref} target="_blank" rel="noopener noreferrer" data-analytics-event="whatsapp_header" className="nav-cta" onClick={closeMenus}>
+        {contactLabel} <span>→</span>
+      </a>}
 
       <button
         className="menu-toggle"
@@ -107,6 +109,7 @@ export function Navbar() {
         </div>
         <div className="services-menu__actions">
           {serviceMenuActions.map(([label, href]) => <Link href={href} key={href} onClick={closeMenus}>{label}<i>→</i></Link>)}
+          {whatsappHref && <a href={whatsappHref} target="_blank" rel="noopener noreferrer" data-analytics-event="whatsapp_services_menu" onClick={closeMenus}>HABLAR CON ARQ360<i>→</i></a>}
         </div>
       </div>
 
@@ -127,9 +130,9 @@ export function Navbar() {
             <span>0{index + 1}</span>{item.label}
           </Link>
         ))}
-        <Link href={contactLink.href} className="mobile-menu__cta" onClick={closeMenus}>
+        {whatsappHref && <a href={whatsappHref} target="_blank" rel="noopener noreferrer" data-analytics-event="whatsapp_mobile_menu" className="mobile-menu__cta" onClick={closeMenus}>
           <span>06</span> CONTÁCTANOS →
-        </Link>
+        </a>}
       </div>
     </header>
   );

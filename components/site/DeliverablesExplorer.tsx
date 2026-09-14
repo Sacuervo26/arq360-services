@@ -1,9 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { deliverables } from "@/data/deliverables";
+import { getDeliverableWhatsAppMessage } from "@/config/contact";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
+
+const deliverableEvents: Record<string, string> = {
+  cad: "whatsapp_cad",
+  bim: "whatsapp_bim",
+  "nube-puntos": "whatsapp_lidar",
+};
 
 export function DeliverablesExplorer() {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -36,13 +43,13 @@ export function DeliverablesExplorer() {
             <button type="button" onClick={() => toggle(item.id)} aria-expanded={open} aria-controls={`panel-${item.id}`}>
               <div className="deliverable-panel__image"><Image src={item.image} alt="" fill sizes="(max-width: 700px) 35vw, 16vw" /></div>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <div><h3>{item.title}</h3>{item.technical && <b>{item.technical}</b>}<p>{item.summary}</p></div>
+              <div><h3>{item.title}</h3>{item.technical && <b>{item.technical}</b>}<div className="deliverable-panel__badges"><small>EXCLUSIVO ADVANCED</small><small>COSTO ADICIONAL</small></div><p>{item.summary}</p></div>
               <i>{open ? "−" : "+"}</i>
             </button>
             <div id={`panel-${item.id}`} className="deliverable-panel__details" hidden={!open}>
               <div><span>QUÉ PUEDES RECIBIR</span><ul>{item.receives.map((value) => <li key={value}>{value}</li>)}</ul></div>
               <div><span>IDEAL PARA</span><ul>{item.idealFor.map((value) => <li key={value}>{value}</li>)}</ul></div>
-              <div><span>DISPONIBILIDAD</span><p>{item.package}</p><Link href={`/contacto?entregable=${item.id}`}>SOLICITAR ESTE ENTREGABLE ↗</Link></div>
+              <div><span>DISPONIBILIDAD</span><p>{item.package}</p><small className="deliverable-panel__cost">{item.costNote}</small><WhatsAppLink message={getDeliverableWhatsAppMessage(item.title, item.technical)} eventId={deliverableEvents[item.id] ?? "whatsapp_advanced_addon"} appearance="text">COTIZAR ESTE ENTREGABLE</WhatsAppLink></div>
             </div>
           </article>
         );

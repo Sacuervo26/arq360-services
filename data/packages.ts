@@ -11,6 +11,7 @@ export type ServicePackage = {
   formats: string[];
   addons: string[];
   badge?: string;
+  customizable?: boolean;
 };
 
 export const packages: ServicePackage[] = [
@@ -23,7 +24,7 @@ export const packages: ServicePackage[] = [
     includes: ["Recorrido virtual 3D", "Planos 2D", "Mediciones del espacio", "Áreas", "Enlace compartible", "Documentación del espacio"],
     idealFor: ["Inmobiliarias", "Propietarios", "Venta y arriendo", "Espacios comerciales", "Documentación general"],
     formats: ["Experiencia web compartible", "Planos y documentación según alcance"],
-    addons: ["Planos editables CAD / DWG", "Elevaciones exteriores", "Plano de cubierta"],
+    addons: [],
   },
   {
     slug: "premium",
@@ -35,18 +36,20 @@ export const packages: ServicePackage[] = [
     includes: ["Todo lo incluido en Standard", "Recorrido virtual 3D", "Planos detallados", "Mediciones y áreas", "Elementos del espacio cuando aplique", "Documentación visual ampliada"],
     idealFor: ["Propiedades de alto valor", "Arquitectos", "Remodelaciones", "Diseño", "Documentación detallada"],
     formats: ["Experiencia web compartible", "Planos detallados", "Documentación según alcance"],
-    addons: ["Planos editables CAD / DWG", "Modelo digital BIM / Revit", "Plano de cielo reflejado"],
+    addons: [],
   },
   {
     slug: "advanced",
     name: "ADVANCED",
-    group: "ARQUITECTURA Y CONSTRUCCIÓN",
-    tagline: "PARA DISEÑAR, DOCUMENTAR Y CONSTRUIR.",
-    description: "Convierte la captura espacial en información técnica para arquitectura, remodelación y construcción.",
-    includes: ["Recorrido virtual", "Planos y mediciones", "Planos editables CAD / DWG", "Nube de puntos y datos LiDAR", "Documentación de condiciones existentes", "PDF técnico"],
+    group: "PERSONALIZABLE PARA ARQUITECTURA Y CONSTRUCCIÓN",
+    badge: "PERSONALIZABLE",
+    customizable: true,
+    tagline: "INFORMACIÓN TÉCNICA A LA MEDIDA DE TU PROYECTO.",
+    description: "Pensado para arquitectura, remodelación y construcción. Incluye una base de documentación espacial y permite añadir entregables técnicos según las necesidades del proyecto.",
+    includes: ["Recorrido virtual", "Planos 2D", "Mediciones del espacio", "Documentación espacial base"],
     idealFor: ["Arquitectura", "Construcción", "Remodelación", "Diseño interior", "Levantamientos arquitectónicos", "Documentación as-built"],
-    formats: ["DWG y PDF según alcance", "Datos LiDAR", "RVT cuando forme parte del proyecto"],
-    addons: ["Modelo digital BIM / Revit", "Elevaciones", "Cubierta", "Cielo reflejado", "Plano de implantación"],
+    formats: ["Acceso digital y archivos según alcance"],
+    addons: ["Planos editables CAD / DWG", "Modelo digital BIM / Revit", "Nube de puntos LiDAR", "Elevaciones exteriores", "Plano de cubierta", "Plano de cielo reflejado", "Plano de implantación"],
   },
 ];
 

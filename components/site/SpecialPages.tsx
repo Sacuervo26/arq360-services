@@ -1,5 +1,51 @@
+import { CONTACT_EMAIL, COVERAGE_CITY, COVERAGE_MESSAGE, getWhatsAppUrl, WHATSAPP_MESSAGES } from "@/config/contact";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { SiteHero } from "./SiteHero";
-import { ContactForm } from "./ContactForm";
 
-export function ContactPage() { return <><SiteHero eyebrow="CONTACTO ARQ360" title="CUÉNTANOS QUÉ NECESITAS DIGITALIZAR." summary="Comparte los datos principales del inmueble, el objetivo y la información que necesitas recibir." primary="/servicios" primaryLabel="COMPARAR SERVICIOS" /><section className="content-section page-container"><div className="content-section__intro"><span>01 — SOLICITUD</span><h2>CONSTRUYAMOS EL ALCANCE</h2><p>No necesitas conocer el paquete exacto. Podemos ayudarte a definirlo.</p></div><Suspense fallback={<p>CARGANDO FORMULARIO…</p>}><ContactForm /></Suspense></section><section className="process-band page-container">{[["REVISAMOS TU SOLICITUD","Organizamos la información recibida."],["VALIDAMOS EL ALCANCE","Confirmamos área, ubicación y entregables."],["PREPARAMOS TU COTIZACIÓN","Definimos una propuesta según el alcance real."],["COORDINAMOS LA CAPTURA","Acordamos fecha y condiciones de visita."]].map(([t,p],i)=><article key={t}><span>{String(i+1).padStart(2,"0")}</span><h3>{t}</h3><p>{p}</p></article>)}</section></>; }
-import { Suspense } from "react";
+export function ContactPage() {
+  const whatsappReady = Boolean(getWhatsAppUrl(WHATSAPP_MESSAGES.general));
+
+  return (
+    <>
+      <SiteHero
+        eyebrow="CONTACTO // ARQ360"
+        title="HABLEMOS DE TU PROYECTO."
+        summary={"Cuéntanos qué inmueble quieres digitalizar y qué información necesitas obtener. Actualmente prestamos servicios de captura en Bogotá D.C."}
+        primaryLabel="HABLAR POR WHATSAPP"
+        primaryMessage={WHATSAPP_MESSAGES.general}
+        primaryEventId="whatsapp_contact"
+        secondary={{ href: "mailto:" + CONTACT_EMAIL, label: "ENVIAR CORREO" }}
+      />
+      <section className="contact-channels page-container">
+        <header>
+          <span>01 — CANALES DE CONTACTO</span>
+          <h2>ELIGE CÓMO<br /><b>HABLAR CON NOSOTROS.</b></h2>
+        </header>
+        <div className="contact-channels__grid">
+          <article>
+            <span>01</span>
+            <h3>WHATSAPP</h3>
+            <p>La forma más rápida de hablar con nosotros.</p>
+            {whatsappReady ? (
+              <WhatsAppLink message={WHATSAPP_MESSAGES.general} eventId="whatsapp_contact" appearance="text">INICIAR CONVERSACIÓN</WhatsAppLink>
+            ) : (
+              <small>CANAL PREPARADO · NÚMERO PENDIENTE DE CONFIGURACIÓN</small>
+            )}
+          </article>
+          <article>
+            <span>02</span>
+            <h3>CORREO ELECTRÓNICO</h3>
+            <p>{CONTACT_EMAIL}</p>
+            <a href={"mailto:" + CONTACT_EMAIL}>ENVIAR CORREO <i>↗</i></a>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>COBERTURA</h3>
+            <p>{COVERAGE_CITY}</p>
+            <small>{COVERAGE_MESSAGE}</small>
+          </article>
+        </div>
+      </section>
+    </>
+  );
+}
