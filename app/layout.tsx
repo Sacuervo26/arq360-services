@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { GeistMono, GeistSans } from "geist/font";
 import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
+import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arq360.co"),
+  metadataBase: new URL(SITE_URL),
   title: "ARQ360 Services | Captura espacial y documentación técnica",
   description:
     "Captura espacial, recorridos virtuales, planos, mediciones y documentación técnica para proyectos en Colombia.",

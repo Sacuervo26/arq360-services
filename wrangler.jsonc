@@ -6,6 +6,17 @@
     "nodejs_compat"
   ],
   "main": "vinext/server/fetch-handler",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "arq360services.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.arq360services.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "dist/client",
     "not_found_handling": "none",
