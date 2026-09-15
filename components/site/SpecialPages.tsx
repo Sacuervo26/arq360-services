@@ -35,7 +35,7 @@ export function ContactPage() {
           <article>
             <span>02</span>
             <h3>CORREO ELECTRÓNICO</h3>
-            <p>{CONTACT_EMAIL}</p>
+            <p className="contact-channels__email">{CONTACT_EMAIL}</p>
             <a href={"mailto:" + CONTACT_EMAIL}>ENVIAR CORREO <i>↗</i></a>
           </article>
           <article>
