@@ -1,22 +1,8 @@
 import type { MetadataRoute } from "next";
-import { sectors } from "@/data/sectors";
-import { projects } from "@/data/projects";
 import { SITE_URL } from "@/config/site";
+import { sectors } from "@/data/redesign";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [
-    "",
-    "/servicios",
-    "/planix-r1",
-    "/proyectos",
-    "/nosotros",
-    "/contacto",
-    ...sectors.map((item) => `/sectores/${item.slug}`),
-    ...projects.map((item) => `/proyectos/${item.slug}`),
-  ];
-  return paths.map((path, index) => ({
-    url: `${SITE_URL}${path}`,
-    changeFrequency: index === 0 ? "weekly" : "monthly",
-    priority: index === 0 ? 1 : path.split("/").length === 2 ? 0.8 : 0.65,
-  }));
+  const paths = ["","/servicios","/servicios/standard","/servicios/premium","/servicios/advanced","/servicios/comparar","/ejemplos","/ejemplos/standard","/ejemplos/premium","/ejemplos/advanced","/sectores",...sectors.map((item)=>`/sectores/${item.slug}`),"/planix-r1","/nosotros","/contacto"];
+  return paths.map((path,index)=>({url:`${SITE_URL}${path}`,changeFrequency:index===0?"weekly":"monthly",priority:index===0?1:path.split("/").length<=2?.8:.7}));
 }

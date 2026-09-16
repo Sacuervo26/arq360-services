@@ -1,33 +1,12 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Hero } from "@/components/home/Hero";
-import { MetricsBar } from "@/components/home/MetricsBar";
-import { ExperienceSection } from "@/components/home/ExperienceSection";
-import { DeliverablesSection } from "@/components/home/DeliverablesSection";
-import { PlanixSection } from "@/components/home/PlanixSection";
-import { WorkflowSection } from "@/components/home/WorkflowSection";
-import { IndustriesSection } from "@/components/home/IndustriesSection";
-import { TechnicalOutputsSection } from "@/components/home/TechnicalOutputsSection";
-import { ColombiaCta } from "@/components/home/ColombiaCta";
-import { PackagesSection } from "@/components/home/PackagesSection";
-import { FinalCta } from "@/components/home/FinalCta";
-import { Footer } from "@/components/layout/Footer";
+import type { Metadata } from "next";
+import { HomePage } from "@/components/site/RedesignPages";
+
+export const metadata: Metadata = {
+  title: "ARQ360 Services | Escaneo 3D, Recorridos Virtuales y Planos en Bogotá",
+  description: "Digitalización de inmuebles con tecnología iGUIDE: recorridos virtuales, planos, mediciones y documentación técnica en Bogotá.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
-  return (
-    <main>
-      <Navbar />
-      <Hero />
-      <MetricsBar />
-      <ExperienceSection />
-      <DeliverablesSection />
-      <PackagesSection />
-      <PlanixSection />
-      <WorkflowSection />
-      <IndustriesSection />
-      <TechnicalOutputsSection />
-      <ColombiaCta />
-      <FinalCta />
-      <Footer />
-    </main>
-  );
+  return <HomePage />;
 }

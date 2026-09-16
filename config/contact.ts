@@ -1,4 +1,4 @@
-export const CONTACT_EMAIL = "contato@arq360services.com";
+export const CONTACT_EMAIL = "contacto@arq360services.com";
 
 export const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
