@@ -38,7 +38,7 @@ export const advancedAddons = [
 
 export const packageExamples = {
   standard: { title: "Vivienda residencial", subtitle: "Recorrido y plano para comprender la distribución del inmueble.", url: "https://youriguide.com/urwkb_1121_sample_road_kitchener_on", image: "/images/hero-architecture-v3.png" },
-  premium: { title: "Oficina de demostración", subtitle: "Ejemplo con mayor contexto visual para consultar espacios y elementos.", url: "https://youriguide.com/v4H2RMIUYYJDD1", image: "/images/iguide/iguide-tablet-tour-reference.png" },
+  premium: { title: "Oficina de demostración", subtitle: "Ejemplo con mayor contexto visual para consultar espacios y elementos.", url: "https://youriguide.com/v4H2RMIUYYJDD1", image: "/images/iguide/iguide-floorplan-tablet-reference.png" },
   advanced: { title: "Antes y después de construcción", subtitle: "Referencia espacial aplicada a la documentación de un proyecto.", url: "https://youriguide.com/pre_and_post_construction", image: "/images/planix/planix-scanned-room-effect-reference.png" },
 } as const;
 
