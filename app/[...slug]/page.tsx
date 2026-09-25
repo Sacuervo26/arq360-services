@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { AboutPage, ComparePage, ContactPage, PlanixPage, SectorDetailPage, SectorsPage, ServiceDetailPage, ServicesPage } from "@/components/site/RedesignPages";
-import { packages, sectorBySlug, sectors, type PackageId } from "@/data/redesign";
+import { sectorBySlug, sectors, type PackageId } from "@/data/redesign";
 
 const packageIds: PackageId[] = ["standard","premium","advanced"];
 const staticRoutes = [["servicios"],["servicios","standard"],["servicios","premium"],["servicios","advanced"],["servicios","comparar"],["sectores"],...sectors.map(s=>["sectores",s.slug]),["planix-r1"],["nosotros"],["contacto"]];
