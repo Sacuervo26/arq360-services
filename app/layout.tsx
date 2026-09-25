@@ -22,7 +22,7 @@ export const metadata:Metadata={
 
 const organizationJsonLd={
   "@context":"https://schema.org","@type":"ProfessionalService",name:SITE_NAME,legalName:LEGAL_NAME,url:SITE_URL,email:CONTACT_EMAIL,
-  areaServed:{"@type":"City",name:COVERAGE_CITY},address:{"@type":"PostalAddress",addressLocality:COVERAGE_CITY,addressCountry":"CO"},
+  areaServed:{"@type":"City",name:COVERAGE_CITY},address:{"@type":"PostalAddress",addressLocality:COVERAGE_CITY,addressCountry:"CO"},
 };
 
 export const viewport:Viewport={themeColor:"#ffffff",colorScheme:"light"};
