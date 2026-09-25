@@ -21,15 +21,18 @@ export function InteractiveTour({ title, subtitle, url }: { title: string; subti
         setVisible(true);
         observer.disconnect();
       }
-    }, { rootMargin: "300px 0px" });
+    }, { rootMargin: "240px 0px" });
     observer.observe(root.current);
     return () => observer.disconnect();
   }, []);
 
-  return <section className="tour" ref={root} aria-label={title}>
+  return <section className="tour-experience" ref={root} aria-label={title}>
+    <header className="tour-experience__header">
+      <div><span>RECORRIDO INTERACTIVO</span><h2>{title}</h2></div>
+      <p>{subtitle}</p>
+    </header>
     <div className="tour__frame">
-      {visible ? <iframe src={embedUrl(url)} title={`iGUIDE: ${title}`} allow="fullscreen; gyroscope; accelerometer" allowFullScreen /> : <div className="tour__loading" role="status">El recorrido interactivo se cargará al entrar en pantalla.</div>}
+      {visible ? <iframe src={embedUrl(url)} title={`iGUIDE: ${title}`} allow="fullscreen; gyroscope; accelerometer" allowFullScreen /> : <div className="tour__loading" role="status">Preparando el recorrido interactivo…</div>}
     </div>
-    <div className="tour__caption"><div><span>RECORRIDO INTEGRADO</span><h2>{title}</h2></div><p>{subtitle}</p></div>
   </section>;
 }

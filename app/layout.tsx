@@ -9,6 +9,7 @@ import "./globals.css";
 import "./redesign.css";
 import "./responsive-fixes.css";
 import "./final-redesign.css";
+import "./tour-refinement.css";
 
 export const metadata:Metadata={
   metadataBase:new URL(SITE_URL),
