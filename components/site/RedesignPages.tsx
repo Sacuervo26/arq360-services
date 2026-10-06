@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Box, Check, Compass, FileText, Layers3, Ruler, ScanLine } from "lucide-react";
 import { CONTACT_EMAIL, COVERAGE_CITY, COVERAGE_MESSAGE, WHATSAPP_MESSAGES, getSectorWhatsAppMessage } from "@/config/contact";
-import { advancedAddons, packageExamples, packages, sectors, type PackageId } from "@/data/redesign";
+import { advancedAddons, featuredTour, packageExamples, packages, sectors, type PackageId } from "@/data/redesign";
 import { InteractiveTour } from "@/components/site/InteractiveTour";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 
@@ -44,6 +44,8 @@ export function HomePage() {
     </section>
 
     <section className="section container"><SectionHead eyebrow="QUÉ OBTIENES" title={<>Una captura. <em>Múltiples posibilidades.</em></>} text="El mismo registro espacial puede convertirse en recursos útiles según el objetivo del proyecto."/><div className="outcome-grid">{outcomes.map(([Icon,title,text])=><article className="icon-card" key={title}><Icon/><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+
+    <section className="section tour-band"><InteractiveTour {...featuredTour}/></section>
 
     <section className="section section--soft"><div className="container"><SectionHead eyebrow="SERVICIOS" title={<>Elige el nivel de <em>información que necesitas.</em></>} text="Tres alcances claros, sin mezclar entregables."/><div className="package-grid">{serviceList.map((id,index)=>{const item=packages[id];return <article className={`package-card package-card--${id}`} key={id}><span>0{index+1}</span><p>{item.eyebrow}</p><h3>{item.name}</h3><ul>{cards[id].map(x=><li key={x}><Check/>{x}</li>)}</ul><Link href={`/servicios/${id}`}>Ver servicio <Arrow/></Link></article>})}</div></div></section>
 

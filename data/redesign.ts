@@ -37,14 +37,22 @@ export const advancedAddons = [
   { title: "Site Plan", format: "PLANO DE IMPLANTACIÓN", image: "/images/iguide/cad-floor-plan-reference.png", text: "Plano general de implantación según el área y alcance acordados." },
 ] as const;
 
+export const FEATURED_TOUR_URL = "https://youriguide.com/edificio_manzana_3_1910?unbranded=1&bgcolor=FFFFFF";
+
+export const featuredTour = {
+  title: "Edificio Manzana 3 · 1910",
+  subtitle: "Explora directamente uno de nuestros proyectos y navega cada espacio desde el recorrido iGUIDE.",
+  url: FEATURED_TOUR_URL,
+} as const;
+
 export const packageExamples = {
-  standard: { title: "Recorrido Standard real", subtitle: "Recorre el inmueble, consulta el plano y utiliza las herramientas del visor.", url: "https://youriguide.com/urwkb_1121_sample_road_kitchener_on" },
+  standard: { title: "Edificio Manzana 3 · 1910", subtitle: "Recorre el inmueble, consulta el plano y utiliza las herramientas del visor.", url: FEATURED_TOUR_URL },
   premium: { title: "100 Chattel Street", subtitle: "Explora este proyecto Premium directamente y navega todos sus espacios.", url: "https://youriguide.com/100_chattel_st_haverhill_ma" },
   advanced: { title: "Documentación Advanced", subtitle: "Plano técnico de referencia del paquete Advanced.", url: "" },
 } as const;
 
 export const sectors = [
-  { slug: "inmobiliario", name: "Inmobiliario", hero: "INMOBILIARIO", image: "/images/sector_inmobiliario.png", summary: "Presenta cada propiedad con información visual, planos y mediciones que ayudan a comprender mejor su distribución.", recommended: "Standard o Premium", tourTitle: "Recorrido inmobiliario real", tourUrl: "https://youriguide.com/urwkb_1121_sample_road_kitchener_on", uses: ["Presentación visual de la propiedad", "Consulta remota de distribución y medidas", "Información fácil de compartir"] },
+  { slug: "inmobiliario", name: "Inmobiliario", hero: "INMOBILIARIO", image: "/images/sector_inmobiliario.png", summary: "Presenta cada propiedad con información visual, planos y mediciones que ayudan a comprender mejor su distribución.", recommended: "Standard o Premium", tourTitle: "Edificio Manzana 3 · 1910", tourUrl: FEATURED_TOUR_URL, uses: ["Presentación visual de la propiedad", "Consulta remota de distribución y medidas", "Información fácil de compartir"] },
   { slug: "arquitectura-construccion", name: "Arquitectura y construcción", hero: "LEVANTA. DISEÑA. CONSTRUYE.", image: "/images/sector_arquitectura_construccion.png", summary: "Documenta el estado actual del inmueble y convierte la captura en información útil para diseño, remodelación y construcción.", recommended: "Advanced", tourTitle: "Demo de arquitectura y construcción", tourUrl: "https://youriguide.com/56c4afe2-1548-495b-ac08-44ef56cc979e", uses: ["Levantamiento del estado existente", "Referencia para diseño y remodelación", "Coordinación de información para construcción"] },
   { slug: "seguros-restauracion", name: "Seguros y restauración", hero: "DOCUMENTA. COMPARA. RESTAURA.", image: "/images/sector_seguros_restauracion.png", summary: "Organiza un registro visual, mediciones y condiciones del inmueble para apoyar procesos de documentación y restauración.", recommended: "Según el nivel de documentación", tourTitle: "Demo de seguros y restauración", tourUrl: "https://youriguide.com/664e7263-4c29-4c6a-9b35-b4b98cf8bf57", uses: ["Registro visual navegable", "Consulta de condiciones y medidas", "Apoyo documental antes y después de una intervención"] },
   { slug: "evacuacion-emergencia", name: "Evacuación y emergencia", hero: "ORIENTA. SEÑALIZA. PREPARA.", image: "/images/sector_evacuacion_emergencia.png", summary: "Convierte la distribución del inmueble en una base clara para planos de evacuación y recursos de orientación.", recommended: "Según el alcance del proyecto", tourTitle: "Demo de instalaciones", tourUrl: "https://youriguide.com/v4H2RMIUYYJDD1", uses: ["Rutas, salidas y puntos de encuentro", "Ubicación de extintores, alarmas y primeros auxilios", "Señalización de «usted está aquí»"] },
