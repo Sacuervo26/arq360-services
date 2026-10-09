@@ -1,7 +1,10 @@
 export const CONTACT_EMAIL = "contacto@arq360services.com";
 
+const OFFICIAL_WHATSAPP_NUMBER = "573123800992";
+
 export const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ||
+  OFFICIAL_WHATSAPP_NUMBER;
 
 export const COVERAGE_CITY = "Bogotá D.C.";
 

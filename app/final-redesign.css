@@ -24,4 +24,4 @@ html{overflow-x:hidden;scroll-behavior:smooth}body{background:#fff!important;col
 .new-footer__socials svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8}
 .new-footer__socials a[data-network="tiktok"] svg{fill:currentColor;stroke:none}
 @media(max-width:900px){:root{--content-x:28px}}
-@media(max-width:600px){:root{--content-x:20px}.home-hero h1{max-width:100%!important;font-size:clamp(31px,8.2vw,36px)!important;line-height:1.04!important;letter-spacing:-.04em!important;overflow-wrap:normal!important}.home-hero h1 em{display:inline!important}}
+@media(max-width:600px){:root{--content-x:20px}}
