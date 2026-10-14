@@ -25,3 +25,19 @@ html{overflow-x:hidden;scroll-behavior:smooth}body{background:#fff!important;col
 .new-footer__socials a[data-network="tiktok"] svg{fill:currentColor;stroke:none}
 @media(max-width:900px){:root{--content-x:28px}}
 @media(max-width:600px){:root{--content-x:20px}}
+
+
+/* Privacy policy */
+.legal-page{background:#fff;color:var(--ink)}
+.legal-page__hero{padding:clamp(72px,8vw,118px) 0;background:linear-gradient(180deg,var(--blue-soft),#fff);border-bottom:1px solid var(--line)}
+.legal-page__hero .container{max-width:1040px}
+.legal-page__hero h1{max-width:900px;margin:24px 0 18px;font-size:var(--title-display,clamp(48px,5.2vw,76px));font-weight:500;line-height:1.02;letter-spacing:-.045em}
+.legal-page__hero time{display:block;color:var(--muted);font-size:15px}
+.legal-page__body{max-width:980px;padding-block:clamp(58px,7vw,96px)}
+.legal-page__intro{margin:0 0 48px;color:var(--ink);font-size:clamp(18px,1.6vw,21px);line-height:1.75}
+.legal-page__body section{padding:34px 0;border-top:1px solid var(--line)}
+.legal-page__body section:last-child{padding-bottom:0}
+.legal-page__body h2{margin:0 0 14px;color:var(--ink);font-size:clamp(25px,2.5vw,34px);font-weight:520;line-height:1.15;letter-spacing:-.035em}
+.legal-page__body p{max-width:850px;margin:0;color:var(--muted);font-size:17px;line-height:1.8}
+.legal-page__body a{color:var(--cyan-hover);font-weight:650;text-decoration-thickness:1px;text-underline-offset:4px}
+@media(max-width:600px){.legal-page__hero{padding:54px 0}.legal-page__hero h1{font-size:var(--title-display,36px)}.legal-page__body{padding-block:48px}.legal-page__intro{margin-bottom:36px;font-size:17px}.legal-page__body section{padding:28px 0}.legal-page__body h2{font-size:26px}.legal-page__body p{font-size:16px;line-height:1.75}}
