@@ -6,7 +6,7 @@ import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 const groups = [
   ["SERVICIOS",[["Standard","/servicios/standard"],["Premium","/servicios/premium"],["Advanced","/servicios/advanced"]]],
   ["SECTORES",[["Inmobiliario","/sectores/inmobiliario"],["Arquitectura y construcción","/sectores/arquitectura-construccion"],["Seguros y restauración","/sectores/seguros-restauracion"],["Evacuación y emergencia","/sectores/evacuacion-emergencia"]]],
-  ["EMPRESA",[["Nosotros","/nosotros"],["PLANIX R1","/planix-r1"],["Contacto","/contacto"]]],
+  ["EMPRESA",[["Nosotros","/nosotros"],["PLANIX R1","/planix-r1"],["Contacto","/contacto"],["Política de privacidad","/politica-de-privacidad"]]],
 ] as const;
 
 const socialLinks = [
