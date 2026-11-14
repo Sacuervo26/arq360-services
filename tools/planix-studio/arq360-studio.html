@@ -21,7 +21,7 @@
 <p class="desc">Conecta escaneos usando sus posiciones de captura, corrige los enlaces y descarga una web 360° autónoma. La ubicación de Stitch y la geometría dibujada en Draft requieren un importador adicional; este prototipo usa <code>scan.json</code> del ZIP original.</p>
 <div class="tour-grid"><div><canvas id="tourMap" class="tour-map" width="1100" height="700"></canvas><div class="tour-control"><button class="btn" id="tourAutolink">Recalcular enlaces</button><button class="btn" id="tourSelect">Seleccionar estación</button><button class="btn" id="tourWalls">Dibujar muros guía</button><button class="btn" id="tourUndo">Deshacer muro</button></div><p class="note">Selecciona estaciones en el mapa. En modo dibujo, dos clics crean un muro esquemático. Las líneas dibujadas no proceden de Draft.</p></div>
 <div><h3>Escaneo seleccionado: <span id="tourCurrent">—</span></h3><div id="tourConnections" class="tour-conn"></div><label class="control">Conectar con <select id="tourTarget"></select></label><div class="tour-control"><button class="btn" id="tourAdd">Añadir conexión</button></div><p class="note">Las conexiones por proximidad pueden atravesar muros. Revísalas antes de entregar un tour comercial.</p><div class="actions"><button id="tourExport" class="btn primary">↓ Exportar web 360° autónoma</button><button id="tourJson" class="btn">↓ Tour JSON</button><button id="tourDxf" class="btn">↓ DXF del croquis</button></div><div id="tourStatus" class="note"></div></div>
-</div></section><div id="statusOutside" class="status"></div><footer class="foot">PLANIX Lab · Prototipo independiente para analizar archivos proporcionados por el propietario. No es una herramienta oficial de iGUIDE. Tu ZIP se procesa localmente y no se envía a servidores.</footer></div>
+</div></section><section class="panel" id="tarInspector" style="margin:20px 0"><div class="eyebrow">Paso 04 · Investigación de Stitch y Draft</div><h2>Inspector de archivos .stitch.tar y .draft.tar</h2><p class="note">Inventario de archivos y comparación estructural. Todavía no descifra los dibujos internos de Planitar ni extrae la alineación de Stitch.</p><div class="controls"><label class="control">TAR de Stitch <input id="stitchInput" type="file" accept=".tar"></label><label class="control">TAR de Draft <input id="draftInput" type="file" accept=".tar"></label><button class="btn secondary" id="tarExport">↓ Descargar inventario JSON</button></div><pre id="tarReport">Carga uno o los dos archivos TAR para comparar sus entradas y tamaños.</pre></section><div id="statusOutside" class="status"></div><footer class="foot">PLANIX Lab · Prototipo independiente para analizar archivos proporcionados por el propietario. No es una herramienta oficial de iGUIDE. Tu ZIP se procesa localmente y no se envía a servidores.</footer></div>
 <script>
 'use strict';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -221,4 +221,29 @@ $('#tourExport').onclick=async()=>{
   $('#tourStatus').textContent='Recorrido generado. Abre el HTML descargado en Chrome o Edge. Conexiones corregibles desde esta aplicación.';
  }catch(e){console.error(e);$('#tourStatus').textContent='Error al generar recorrido: '+e.message;}finally{button.disabled=false;}
 };
+
+/* Inspector TAR: únicamente metadatos de las entradas, no reinterpretación de geometría propietaria */
+const tarInventory={stitch:null,draft:null};
+async function readTarInventory(file){
+ const bytes=new Uint8Array(await file.arrayBuffer());const entries=[];let p=0;let prefix="";
+ while(p+512<=bytes.length&&entries.length<20000){
+  const block=bytes.subarray(p,p+512);if(block.every(x=>x===0))break;
+  const text=x=>new TextDecoder().decode(x).split('\0')[0];
+  const path=text(block.subarray(0,100)),sz=text(block.subarray(124,136)).trim(),size=parseInt(sz||'0',8),type=text(block.subarray(156,157));
+  if(!Number.isFinite(size)||size<0||p+512+size>bytes.length)break;
+  if(type==='L'){prefix=text(bytes.subarray(p+512,p+512+size)).trim();}
+  else if(path){entries.push({name:prefix||path,bytes:size,type});prefix='';}
+  p+=512+Math.ceil(size/512)*512;
+ }
+ return{name:file.name,fileSize:bytes.length,entries};
+}
+function showTarInventory(){
+ const a=tarInventory.stitch,b=tarInventory.draft;
+ const make=o=>o?o.name+' — '+o.entries.length+' entradas, '+(o.fileSize/1048576).toFixed(1)+' MB\n'+o.entries.slice(0,80).map(e=>e.name+' ('+e.bytes+' bytes)').join('\n'):'No cargado';
+ $('#tarReport').textContent='STITCH\n'+make(a)+'\n\nDRAFT\n'+make(b)+'\n\nAviso: el formato binario propietario no ha sido convertido a geometría.';
+}
+$('#stitchInput').onchange=async e=>{try{tarInventory.stitch=await readTarInventory(e.target.files[0]);showTarInventory();}catch(err){$('#tarReport').textContent='Error al leer Stitch: '+err.message;}};
+$('#draftInput').onchange=async e=>{try{tarInventory.draft=await readTarInventory(e.target.files[0]);showTarInventory();}catch(err){$('#tarReport').textContent='Error al leer Draft: '+err.message;}};
+$('#tarExport').onclick=()=>saveBlob(new Blob([JSON.stringify(tarInventory,null,2)],{type:'application/json'}),'ARQ360_Stitch_Draft_inventario.json');
+
 </script></body></html>
